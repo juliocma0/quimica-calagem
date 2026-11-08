@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 20px;
-    background-color: #eeeeee;
+    background-color: #ffffff;
     color: #222222;
     font-family: "Dialog", "Arial", sans-serif;
     font-size: 13px;
@@ -11,6 +11,17 @@ body {
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+}
+
+#simulacao-container {
+    box-sizing: border-box;
+    padding: 12px;
+    background-color: #eeeeee;
+    border: 2px outset #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .simulacao {

@@ -104,7 +104,9 @@ class Interface                 (
         botoes.appendChild(botaoVelocidade)
 
         painel.appendChild(botoes)
-        dom.document.body.appendChild(painel)
+
+        val simulacaoContainer = dom.document.getElementById("simulacao-container")
+        simulacaoContainer.appendChild(painel)
     }
 
     private def criarBotao(texto: String)(acao: => Unit): dom.HTMLButtonElement = {

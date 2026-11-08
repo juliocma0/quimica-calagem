@@ -12,7 +12,9 @@ object Main {
         canvas.width = largura
         canvas.height = altura
         canvas.className = "simulacao"
-        dom.document.body.appendChild(canvas)
+
+        val simulacaoContainer = dom.document.getElementById("simulacao-container")
+        simulacaoContainer.appendChild(canvas)
 
         val simulacao = new Simulacao(largura.toDouble, altura.toDouble)
         val renderizador = new Renderizador(canvas, simulacao)
