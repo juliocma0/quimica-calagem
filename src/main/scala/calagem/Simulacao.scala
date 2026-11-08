@@ -12,7 +12,7 @@ class Simulacao         (
     private val pHInicial               = 4.0
     private val qtdHidrogenioInicial    = 40
     private val qtdAluminioInicial      = 8
-    private val raioReacao              = 38.0
+    private val raioReacao              = 60.0
 
     private val acelAleatoriaMin        = -15.0
     private val acelAleatoriaMax        = 15.0
@@ -31,7 +31,7 @@ class Simulacao         (
     private val alturaCalcarioMin       = 5.0
     private val alturaCalcarioMax       = 45.0
 
-    private val tempoDissolucao         = 1.0
+    private val tempoDissolucao         = 0.05
     private val tempoVidaProdutos       = 3.0
     private val passoMax                = 0.05
 
