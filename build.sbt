@@ -5,5 +5,14 @@ lazy val root = project
     .enablePlugins(ScalaJSPlugin)
     .settings(
         name := "calagem",
-        scalaJSUseMainModuleInitializer := true
+        scalaJSUseMainModuleInitializer := true,
+
+        libraryDependencies +=
+            "org.scala-js" %%% "scalajs-dom" % "2.8.0",
+
+        Compile / fastLinkJS / scalaJSLinkerOutputDirectory :=
+            (baseDirectory.value / "js"),
+
+        Compile / fullLinkJS / scalaJSLinkerOutputDirectory :=
+            (baseDirectory.value / "js")
     )
