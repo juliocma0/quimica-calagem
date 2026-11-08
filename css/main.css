@@ -111,10 +111,11 @@ body {
 }
 
 .ph-rotulo {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
 
-    margin-top: -8px;
+    margin-top: 2px;
     font-size: 10px;
     color: #444444;
+    text-align: center;
 }
