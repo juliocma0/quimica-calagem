@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: #eeeeee;
+    color: #222222;
+    font-family: "Dialog", "Arial", sans-serif;
+    font-size: 13px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.simulacao {
+    display: block;
+    border: 2px inset #dddddd;
+    background: #ffffff;
+}
+
+.painel-controles {
+    box-sizing: border-box;
+    width: 230px;
+    padding: 12px;
+    background-color: #eeeeee;
+    border: 2px outset #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+
+    background-color: #ffffff;
+    border: 2px inset #dddddd;
+}
+
+.informacoes span {
+    font-size: 13px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 6px
+}
+
+.botao {
+    box-sizing: border-box;
+    min-height: 28px;
+    padding: 4px 10px;
+
+    font-family: inherit;
+    font-size: 13px;
+    color: #222222;
+    
+    background-color: #eeeeee;
+    border: 2px outset #ffffff;
+
+    cursor: pointer;
+}
+
+.botao:hover {
+    background-color: #f5f5f5;
+}
+.botao:active {
+    background-color: #dddddd;
+    border-style: inset;
+}
+.botao:focus-visible {
+    outline: 1px dotted #333333;
+    outline-offset: -5px;
+}
+
+.ph-escala {
+    position: relative;
+    height: 16px;
+
+    border: 1px inset #dddddd;
+    background: linear-gradient(
+        to right,
+        #d73027 0%,
+        #f46d43 15%,
+        #fee08b 35%,
+        #ffffbf 50%,
+        #a6d97a 65%,
+        #1a9850 80%,
+        #4575b4 100%
+    );
+}
+
+.ph-marca {
+    position: absolute;
+    top: -4px;
+    left: 0%;
+
+    width: 3px;
+    height: 24px;
+
+    background-color: #222222;
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
+
+    transform: translateX(-50%);
+}
+
+.ph-rotulo {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: -8px;
+    font-size: 10px;
+    color: #444444;
+}
