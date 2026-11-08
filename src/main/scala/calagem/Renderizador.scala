@@ -9,6 +9,8 @@ class Renderizador                  (
     private val ctx = canvas.getContext("2d")
         .asInstanceOf[dom.CanvasRenderingContext2D]
 
+    private val raioIndicador = 75.0    
+
     private def cor(tipo: TipoParticula): String = {
         tipo match
             case TipoParticula.Hidrogenio       => "#F05D63"
@@ -46,9 +48,58 @@ class Renderizador                  (
             case _                      => 12.0
     }
 
+    private def distancia   (
+        a: Particula        ,
+        b: Particula        ): Double =
+    {
+        val dx = a.x - b.x
+        val dy = a.y - b.y
+        math.sqrt(dx * dx + dy * dy)
+    }
+
+    private def desenhaConexao  (
+        carbonato: Particula    ,
+        hidrogenio: Particula   ,
+        distancia: Double       ): Unit =
+    {
+        val prox = 1.0 - math.min(1.0, distancia / raioIndicador)
+
+        ctx.beginPath()
+        ctx.moveTo(carbonato.x, carbonato.y)
+        ctx.lineTo(hidrogenio.x, hidrogenio.y)
+
+        ctx.strokeStyle = s"rgba(255, 100, 100)"
+        ctx.lineWidth = 2.0
+        ctx.stroke()
+    }
+
+    private def desenhaProximidades() : Unit = {
+        val carbonatos = simulacao.particulas.filter(
+            p => p.vivo && p.tipo == TipoParticula.Carbonato)
+
+        val hidrogenios = simulacao.particulas.filter(
+            p => p.vivo && p.tipo == TipoParticula.Hidrogenio)
+
+        carbonatos.foreach { carbonato =>
+            val proxs = hidrogenios
+                .map(h => (h, distancia(carbonato, h)))
+                .filter(_._2 < raioIndicador)
+                .sortBy(_._2)
+                .take(2)
+
+            if (proxs.length == 2) {
+                proxs.foreach { case (hidrogenio, d) =>
+                    desenhaConexao(carbonato, hidrogenio, d)
+                }
+            }
+        }
+    }
+
     def renderizar(): Unit = {
         ctx.fillStyle = "#FFFFFF"
         ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+        desenhaProximidades()
 
         simulacao.particulas.foreach { p =>
             val r = raio(p.tipo)
