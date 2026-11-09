@@ -7,7 +7,7 @@ body {
     font-size: 13px;
 
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
@@ -22,6 +22,53 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.quimico {
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.corpo-texto {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-inline: auto;
+
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+}
+
+.formula {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 20px;
+
+    width: fit-content;
+
+    background-color: #ffffff;
+    border: 2px inset #dddddd;
+}
+
+.componente {
+    display: inline-flex;
+    align-items: flex-start;
+}
+
+.componente sup {
+    font-size: 12px;
+    margin-left: -4px;
 }
 
 .simulacao {
