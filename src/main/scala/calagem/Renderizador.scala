@@ -48,7 +48,8 @@ class Renderizador                  (
         tipo match
             case TipoParticula.Calcario             => 16.0
             case TipoParticula.Aluminio             => 14.0
-            case TipoParticula.HidroxidoAluminio    => 14.0
+            case TipoParticula.HidroxidoAluminio    => 18.0
+            case TipoParticula.Carbonato            => 14.0 
             case _                                  => 12.0
     }
 
