@@ -130,7 +130,7 @@ class Renderizador                  (
             ctx.fill()
 
             ctx.fillStyle = "#000000"
-            ctx.font = "10px Arial"
+            ctx.font = "9px Arial"
             ctx.textAlign = "center"
             ctx.textBaseline = "middle"
 
