@@ -13,39 +13,43 @@ class Renderizador                  (
 
     private def cor(tipo: TipoParticula): String = {
         tipo match
-            case TipoParticula.Hidrogenio       => "#F05D63"
-            case TipoParticula.Aluminio         => "#A78BFA"
-            case TipoParticula.Calcario         => "#E5E0D5"
-            case TipoParticula.Carbonato        => "#F5A623"
-            case TipoParticula.Calcio           => "#50BDE5"
-            case TipoParticula.DioxidoCarbono   => "#B7B7B7"
-            case TipoParticula.Agua             => "#8DD9ED"
+            case TipoParticula.Hidrogenio           => "#F05D63"
+            case TipoParticula.Aluminio             => "#A78BFA"
+            case TipoParticula.Calcario             => "#E5E0D5"
+            case TipoParticula.Carbonato            => "#F5A623"
+            case TipoParticula.Calcio               => "#50BDE5"
+            case TipoParticula.DioxidoCarbono       => "#B7B7B7"
+            case TipoParticula.Agua                 => "#8DD9ED"
+            case TipoParticula.HidroxidoAluminio    => "#aedb5b"
     }
     private def corEscuro(tipo: TipoParticula): String = {
         tipo match
-            case TipoParticula.Hidrogenio       => "#661013"
-            case TipoParticula.Aluminio         => "#242583"
-            case TipoParticula.Calcario         => "#705441"
-            case TipoParticula.Carbonato        => "#724108"
-            case TipoParticula.Calcio           => "#114169"
-            case TipoParticula.DioxidoCarbono   => "#3f3434"
-            case TipoParticula.Agua             => "#1f4e7a"
+            case TipoParticula.Hidrogenio           => "#661013"
+            case TipoParticula.Aluminio             => "#242583"
+            case TipoParticula.Calcario             => "#705441"
+            case TipoParticula.Carbonato            => "#724108"
+            case TipoParticula.Calcio               => "#114169"
+            case TipoParticula.DioxidoCarbono       => "#3f3434"
+            case TipoParticula.Agua                 => "#1f4e7a"
+            case TipoParticula.HidroxidoAluminio    => "#124e17"
     }
     private def rotulo(tipo: TipoParticula): String = {
         tipo match
-            case TipoParticula.Hidrogenio       => "H+"
-            case TipoParticula.Aluminio         => "Al3+"
-            case TipoParticula.Calcario         => "CaCO3"
-            case TipoParticula.Carbonato        => "CO3"
-            case TipoParticula.Calcio           => "Ca2+"
-            case TipoParticula.DioxidoCarbono   => "CO2"
-            case TipoParticula.Agua             => "H2O"
+            case TipoParticula.Hidrogenio           => "H+"
+            case TipoParticula.Aluminio             => "Al3+"
+            case TipoParticula.Calcario             => "CaCO3"
+            case TipoParticula.Carbonato            => "CO3"
+            case TipoParticula.Calcio               => "Ca2+"
+            case TipoParticula.DioxidoCarbono       => "CO2"
+            case TipoParticula.Agua                 => "H2O"
+            case TipoParticula.HidroxidoAluminio    => "Al(OH)3"
     }
     private def raio(tipo: TipoParticula): Double = {
         tipo match
-            case TipoParticula.Calcario => 16.0
-            case TipoParticula.Aluminio => 14.0
-            case _                      => 12.0
+            case TipoParticula.Calcario             => 16.0
+            case TipoParticula.Aluminio             => 14.0
+            case TipoParticula.HidroxidoAluminio    => 14.0
+            case _                                  => 12.0
     }
 
     private def distancia   (

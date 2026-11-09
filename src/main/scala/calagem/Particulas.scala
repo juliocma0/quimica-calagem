@@ -10,6 +10,7 @@ enum TipoParticula {
     case Calcio
     case DioxidoCarbono
     case Agua
+    case HidroxidoAluminio
 }
 
 case class Particula (

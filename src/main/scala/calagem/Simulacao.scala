@@ -35,6 +35,9 @@ class Simulacao         (
     private val tempoVidaProdutos       = 3.0
     private val passoMax                = 0.05
 
+    private val pHPontoMaxAluminio      = 7.0
+    private val conversaoAluminioMax    = 3.0
+
     var ativo = true
     var totalReacoes = 0
 
@@ -102,30 +105,53 @@ class Simulacao         (
         ).toList
 
         for (carbonato <- carbonatos if carbonato.vivo) {
-            if (carbonato.vivo) {
-                val hidrogenioProximo = particulas.filter(
-                    p => p.vivo && p.tipo == TipoParticula.Hidrogenio &&
-                    distancia(p, carbonato) < raioReacao
-                ).sortBy(p => distancia(p, carbonato))
-                .take(2)
+            val hidrogenioProximo = particulas.filter(
+                p => p.vivo && p.tipo == TipoParticula.Hidrogenio &&
+                distancia(p, carbonato) < raioReacao
+            ).sortBy(p => distancia(p, carbonato))
+            .take(2)
 
-                if (hidrogenioProximo.size == 2) {
-                    carbonato.vivo = false
-                    hidrogenioProximo.foreach(_.vivo = false)
+            if (hidrogenioProximo.size == 2) {
+                carbonato.vivo = false
+                hidrogenioProximo.foreach(_.vivo = false)
 
-                    particulas += Particula.criar(
-                        TipoParticula.DioxidoCarbono,
-                        carbonato.x,
-                        carbonato.y
-                    )
-                    particulas += Particula.criar(
-                        TipoParticula.Agua,
-                        carbonato.x + deslocamentoProduto,
-                        carbonato.y
-                    )
-                    totalReacoes += 1
-                }
+                particulas += Particula.criar(
+                    TipoParticula.DioxidoCarbono,
+                    carbonato.x,
+                    carbonato.y
+                )
+                particulas += Particula.criar(
+                    TipoParticula.Agua,
+                    carbonato.x + deslocamentoProduto,
+                    carbonato.y
+                )
+                totalReacoes += 1
             }
+        }
+    }
+
+    private def reagirAluminio(passo: Double): Unit = {
+        val pHFator = (
+            (pHAtual - pHInicial) / (pHPontoMaxAluminio - pHInicial)
+        ).max(0.0).min(1.0)
+
+        val taxa = conversaoAluminioMax * pHFator
+        val probabilidade = 1.0 - math.exp(-taxa * passo)
+
+        val aluminios = particulas.filter(
+            p => p.vivo && p.tipo == TipoParticula.Aluminio
+        ).toList
+
+        for (aluminio <- aluminios if (aluminio.vivo && 
+            Random.nextDouble() < probabilidade)) 
+        {
+            aluminio.vivo = false
+            particulas += Particula.criar(
+                TipoParticula.HidroxidoAluminio,
+                aluminio.x,
+                aluminio.y
+            )
+            totalReacoes += 1
         }
     }
 
@@ -157,12 +183,13 @@ class Simulacao         (
         .foreach(dissolver)
 
         reagir()
+        reagirAluminio(passo)
 
         particulas.filterInPlace { p =>
             p.vivo && 
-            (p.tipo != TipoParticula.DioxidoCarbono &&
+            ((p.tipo != TipoParticula.DioxidoCarbono &&
             p.tipo != TipoParticula.Agua) ||
-            p.idade <= tempoVidaProdutos
+            p.idade <= tempoVidaProdutos)
         }
     }
 
