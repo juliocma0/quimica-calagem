@@ -1323,7 +1323,7 @@ $p.dm = (function() {
     this.u.fillStyle = grad;
     this.u.fill();
     this.u.fillStyle = "#000000";
-    this.u.font = "10px Arial";
+    this.u.font = "9px Arial";
     this.u.textAlign = "center";
     this.u.textBaseline = "middle";
     this.u.shadowColor = "rgba(0, 0, 0, 0.35)";
