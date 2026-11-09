@@ -31,12 +31,13 @@ class Simulacao         (
     private val alturaCalcarioMin       = 5.0
     private val alturaCalcarioMax       = 45.0
 
-    private val tempoDissolucao         = 0.05
+    private val tempoDissolucao         = 1
     private val tempoVidaProdutos       = 3.0
     private val passoMax                = 0.05
 
     private val pHPontoMaxAluminio      = 7.0
-    private val conversaoAluminioMax    = 3.0
+    private val conversaoAluminioMax    = 0.8
+    private val pHPrecipitacaoAluminio  = 5.0
 
     var ativo = true
     var totalReacoes = 0
@@ -84,14 +85,16 @@ class Simulacao         (
         }
     }
 
-    private def dissolver(calcario: Particula): Unit = {
+    private def dissolver(calcario: Particula): Unit =
         calcario.vivo = false
 
+    private def criarProdutosCalcario(calcario: Particula): Unit = {
         particulas += Particula.criar(
             TipoParticula.Carbonato,
             calcario.x,
             calcario.y
         )
+
         particulas += Particula.criar(
             TipoParticula.Calcio,
             calcario.x,
@@ -132,7 +135,8 @@ class Simulacao         (
 
     private def reagirAluminio(passo: Double): Unit = {
         val pHFator = (
-            (pHAtual - pHInicial) / (pHPontoMaxAluminio - pHInicial)
+            (pHAtual - pHPrecipitacaoAluminio) / 
+            (pHPontoMaxAluminio - pHPrecipitacaoAluminio)
         ).max(0.0).min(1.0)
 
         val taxa = conversaoAluminioMax * pHFator
@@ -177,19 +181,24 @@ class Simulacao         (
             }
         }
 
-        particulas.filter(
-            p => p.vivo && p.tipo == TipoParticula.Calcario && p.idade > tempoDissolucao
+        val calcariosDissolvidos = particulas.filter(
+            p => p.vivo && p.tipo == TipoParticula.Calcario &&
+            p.idade > tempoDissolucao
         ).toList
-        .foreach(dissolver)
+
+        calcariosDissolvidos.foreach(dissolver)
+        particulas.filterInPlace(_.vivo)
+
+        calcariosDissolvidos.foreach(criarProdutosCalcario)
 
         reagir()
         reagirAluminio(passo)
 
         particulas.filterInPlace { p =>
             p.vivo && 
-            ((p.tipo != TipoParticula.DioxidoCarbono &&
+            (p.tipo != TipoParticula.DioxidoCarbono &&
             p.tipo != TipoParticula.Agua) ||
-            p.idade <= tempoVidaProdutos)
+            p.idade <= tempoVidaProdutos
         }
     }
 
