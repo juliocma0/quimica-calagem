@@ -25,6 +25,9 @@ class Interface                 (
     private val pHRotulo = dom.document.createElement("div")
         .asInstanceOf[dom.HTMLDivElement]
 
+    private val pHTexto = dom.document.createElement("span")
+        .asInstanceOf[dom.HTMLSpanElement]
+
     private val hidrogenioTexto = dom.document.createElement("span")
         .asInstanceOf[dom.HTMLSpanElement]
 
@@ -136,6 +139,9 @@ class Interface                 (
             pHRotulo.appendChild(rotulo)
         }
 
+        pHTexto.textContent = "pH: --"
+        informacoes.appendChild(pHTexto)
+
         painel.appendChild(pHEscala)
         painel.appendChild(pHRotulo)
     }
@@ -145,6 +151,7 @@ class Interface                 (
         val pHLimitado = math.max(0.0, math.min(14.0, pH))
         val posicao = (pHLimitado / 14.0) * 100.0
         
+        pHTexto.textContent = f"pH: $pH%.2f"
         hidrogenioTexto.textContent = s"H⁺: ${simulacao.qtdHidrogenio}"
         reacoesTexto.textContent = s"Reações: ${simulacao.totalReacoes}"
         pHMarca.style.left = s"$posicao%"
