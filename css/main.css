@@ -67,6 +67,9 @@ body {
     display: flex;
     flex-direction: column;
 
+    background-color: #eeeeee;
+    border: 2px outset #ffffff;
+
     align-items: center;
     text-align: justify;
 }

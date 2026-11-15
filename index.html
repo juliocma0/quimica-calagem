@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Calagem</title>
     <link rel="stylesheet" href="./css/main.css"/>
+    <link rel="icon" href="./images/32x/calcario.png" type="image/x-icon"/>
 </head>
 <body>
     <div id="simulacao-container"></div>
@@ -14,7 +15,7 @@
         <img src="./images/32x/aluminio.png"/>          <p>Al<sup>3+</sup> - Alumínio</p>
         <img src="./images/32x/calcario.png"/>          <p>CaCO<sub>3</sub> - Calcário</p>
         <img src="./images/32x/calcio.png"/>            <p>Ca<sup>2+</sup> - Cálcio</p>
-        <img src="./images/32x/carbonato.png"/>         <p>CO<sub>3</sub> - Carbonato</p>
+        <img src="./images/32x/carbonato.png"/>         <p>CO<sub>3</sub><sup>2-</sup> - Carbonato</p>
         <img src="./images/32x/dioxidoCarbono.png"/>    <p>CO<sub>2</sub> - Dióxido de Carbono</p>
         <img src="./images/32x/hidrogenio.png"/>        <p>H<sup>+</sup> - Hidrogênio</p>
         <img src="./images/32x/hidroxidoAluminio.png"/> <p>Al(OH)<sub>3</sub> - Hidróxido de Alumínio</p>
@@ -81,11 +82,11 @@
         <p>
             A representação acima é uma simplificação para a simulação,
             de forma extensa, o que ocorre é que os íons de carbonato reagem
-            com a água presente no solo, formando bicabornato (HCO<sub>3-</sub>) e
+            com a água presente no solo, formando bicarbonato (HCO<sub>3-</sub>) e
             íons hidróxido (OH<sup>-</sup>) em um processo chamado hidrólise.<br/><br/>
 
             Os íons hidróxido reagem com os íons H<sup>+</sup> responsáveis pela acidez
-            do solo, produzindo água. O bicabornato também participa do processo, reagindo
+            do solo, produzindo água. O bicarbonato também participa do processo, reagindo
             com H<sup>+</sup> e formando água e dióxido de carbono. Com as duas reações,
             a concentração de H<sup>+</sup> diminui, aumentando o pH do solo.<br/><br/>
 
@@ -99,8 +100,8 @@
             decorrente da acidez do solo, é afetado. Em condições de pH elevado,
             os íons Al<sup>3+</sup> tendem a reagir com os íons hidróxido OH<sup>-</sup>,
             formando hidróxido de alumínio Al(OH)<sub>3</sub>, composto pouco solúvel
-            que reduz a concentração de alumínio tóxico no solo. O mesmo composto é a 
-            forma do alumínio que naturalmente se encontra no solo.<br/>
+            que reduz a concentração de alumínio tóxico no solo. O mesmo composto é uma 
+            das formas do alumínio que naturalmente se encontram no solo.<br/>
         </p>
 
         <!-- Al^3 + 3OH^- -> Al(OH)3 -->
@@ -110,6 +111,14 @@
             &xrarr;
             <img class="quimico" src="./images/hidroxidoAluminio.png"/>
         </div>
+
+        <p>
+            A acidez do solo é determinada por outros fatores não representados
+            pela simulação, como os coloides minerais e a matéria orgânicas. 
+            Esses fatores não foram abordados pois o intúito é demonstrar 
+            o processo principal da calagem, que é a neutralização da acidez 
+            e toxicidade do solo.
+        </p>
     </div>
 
     <script src="./js/main.js"></script>
