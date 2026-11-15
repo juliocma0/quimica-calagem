@@ -21,8 +21,28 @@
     </div>
 
     <div class="corpo-texto">
+        <p>
+            Na agricultura, a calagem é utilizada para preparar o solo 
+            para o cultivo agrícola, consistindo na aplicação do calcário
+            para elevar cálcio e/ou magnésio, corrigir o pH acídico do solo
+            e neutralizar o alumínio trivalente (decorrente da acidez).<br/><br/>
 
-    <div class="corpo-texto">
+            São utilizados diferentes tipos de calcário com base nos requerimentos
+            do solo, alguns exemplos são:<br/>
+        </p>
+
+            <ul>
+                <li>Calcário Calcítico: magnésio adequado mas necessidade de cálcio;</li>
+                <li>Calcário Magnesiano: necessidade de magnésio moderada;</li>
+                <li>Calcário Dolomítico: necessidade de magnésio alta;</li>
+            </ul>
+
+        <p>
+            No caso da simulação, é representado o Calcário Calcítico (CaCO<sub>3</sub>).
+            O calcário é dissolvido em cálcio e carbonato, como demonstrado
+            na fórmula abaixo, sendo esse processo favorecido pela acidez do solo,
+            pois os íons H<sup>+</sup> reagem com o carbonato:<br/>
+        </p>
 
         <!-- CaCO3 <=> Ca^2+ + CO3^2- -->
         <div class="formula">
@@ -35,6 +55,14 @@
                 <sup>2-</sup>
             </div>
         </div>
+
+        <p>
+            A reação do carbonato com os íons H<sup>+</sup> é de neutralização 
+            dos íons que contribuem para a acidez do solo, liberando dióxido de 
+            carbono e água. Conforme os íons H<sup>+</sup> são neutralizados em
+            pares pelo carbonato, o pH tende a crescer em direção à um nível
+            adequado para as plantas, no caso da simulação, este pH é 7.<br/>
+        </p>
 
         <!-- CO3^2- + 2H^+ -> CO2 + H2O -->
         <div class="formula">
@@ -49,6 +77,31 @@
             +
             <img class="quimico" src="./images/agua.png" alt="H2O"/>
         </div>
+
+        <p>
+            A representação acima é uma simplificação para a simulação,
+            de forma extensa, o que ocorre é que os íons de carbonato reagem
+            com a água presente no solo, formando bicabornato (HCO<sub>3-</sub>) e
+            íons hidróxido (OH<sup>-</sup>) em um processo chamado hidrólise.<br/><br/>
+
+            Os íons hidróxido reagem com os íons H<sup>+</sup> responsáveis pela acidez
+            do solo, produzindo água. O bicabornato também participa do processo, reagindo
+            com H<sup>+</sup> e formando água e dióxido de carbono. Com as duas reações,
+            a concentração de H<sup>+</sup> diminui, aumentando o pH do solo.<br/><br/>
+
+            Os íons hidróxido são especialmente importantes para outro processo que reduz
+            a acidez e nocividade do solo para as plantas:
+        </p>
+
+        <p>
+            Com o crescimento do pH devido à neutralização dos íons H<sup>+</sup>,
+            o comportamento do alumínio, que também é nocivo para as plantas e surge
+            decorrente da acidez do solo, é afetado. Em condições de pH elevado,
+            os íons Al<sup>3+</sup> tendem a reagir com os íons hidróxido OH<sup>-</sup>,
+            formando hidróxido de alumínio Al(OH)<sub>3</sub>, composto pouco solúvel
+            que reduz a concentração de alumínio tóxico no solo. O mesmo composto é a 
+            forma do alumínio que naturalmente se encontra no solo.<br/>
+        </p>
 
         <!-- Al^3 + 3OH^- -> Al(OH)3 -->
         <div class="formula">
